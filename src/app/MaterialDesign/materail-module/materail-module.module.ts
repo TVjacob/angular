@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -34,6 +35,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatMenuModule,
     MatTableModule,
     MatDialogModule,
+    MatListModule,
   ],
 })
 export class MaterailModuleModule { }
