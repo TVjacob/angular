@@ -1,9 +1,10 @@
 export interface Book{
-  id:Number,
-  title:String,
-  price:Number,
-  description:String,
-  img_src:String,
-  file_path:String,
-  page_no:Number,
+  id:number,
+  title:string,
+  price:number,
+  description:string,
+  img_src:string,
+  file_path:string,
+  category:string,
+  author:string,
 }

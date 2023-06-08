@@ -1,1 +1,18 @@
-<p>books works!</p>
+<h1>Our Books </h1>
+<ul>
+
+  <ng-container *ngFor="let singleBook of books; let i=index">
+<mat-card>
+  <mat-card-header>{{singleBook.title}}
+  </mat-card-header>
+  <mat-card-content>
+    <img [src]="singleBook.img_src" [alt]="singleBook.title" width="100"
+        class="m-auto rounded-sm" />
+    <p>
+    {{ singleBook.title | titlecase }} by {{ singleBook.author |
+      titlecase}}</p>
+  <p class="my-4">{{ singleBook.price | currency:'UGX' }}</p>
+  </mat-card-content>
+</mat-card>
+</ng-container>
+</ul>

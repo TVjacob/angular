@@ -1,6 +1,6 @@
 export interface UserLogin{
   id:number
-  username:String,
+  username:string,
   password:string,
   isadmin:boolean,
   img_src:string,
