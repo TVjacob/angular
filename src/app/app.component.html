@@ -1,19 +1,17 @@
-<mat-toolbar color="primary" class="flex justify-content-between">
-  Bookbuddy Public Library
-
-  <a routerLink="" href="" mat-stroked-button>Home</a>
-  <a routerLink="books" href="" mat-stroked-button>About Us</a>
-  <a routerLink="books" href="" mat-stroked-button>Shop</a>
-  <a routerLink="books" href="" mat-stroked-button>Register</a>
-  <div>
-    <a routerLink="login" href="" mat-stroked-button>Login</a>
-  </div>
+<mat-toolbar color="primary">
+  <span class="toolbar-title">Bookbuddy Public Library</span>
+  <span class="spacer"></span>
+  <a mat-mini-fab routerLink="/cart">{{ oncart() }}Cart</a>
+  <ng-container *ngIf="!isAuthenticated()">
+  <a mat-button routerLink="/login">Login</a>
+  <a mat-button routerLink="/register">Register</a>
+  </ng-container>
+  <a mat-button routerLink="/books">Books</a>
+  <ng-container *ngIf="isAuthenticated()">
+    <button (click)="logout()" class="mx-4">Logout</button>
+</ng-container>
 </mat-toolbar>
+
+
 <router-outlet/>
-<mat-toolbar color="primary" class="">
-  <mat-list>
-      <mat-list-item > Thank you </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item > @copy rigits 2023</mat-list-item>
-  </mat-list>
- </mat-toolbar>
+

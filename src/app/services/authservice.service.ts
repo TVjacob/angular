@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserLogin } from '../models/login';
+import { LoginForm, UserLogin } from '../models/login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -41,25 +42,37 @@ export class AuthserviceService {
     },
   ]
 
-  constructor() { }
+  constructor(private router: Router) { }
   addUser(user:UserLogin){
     this.users.push(user);
   }
-  autheticateUser(user:UserLogin){
-    if(this.users.filter((data) => data.username != user.username && data.password != user.password)){
-      return this.isloggedin
+  autheticateUser(form:LoginForm){
+    if (this.users.filter((data) => data.username === form.username && data.password === form.password).length > 0) {
+      this.users.filter((data) => data.username === form.username && data.password === form.password)[0].isactive=true;
+     if(this.users.filter((data) => data.username === form.username && data.password === form.password && data.isadmin===true).length>0){
+      this.router.navigate(['admin'])
+      return true;
+     }
+      this.router.navigate(['cart'])
+      return true;
     }
-    this.users.filter(data => data.username == user.username)[0].isactive=true;
-    return !this.isloggedin
+    return false;
   }
 
   getLoggedinUser(){
-    this.users.filter((data) => data.isactive);
+    if(this.users.filter((data) => data.isactive).length>0){
+      return true;
+    }
+    return false;
   }
   logout(){
-    this.users.filter(data => data.isactive)[0].isactive=false;
+    this.users.filter(data => data.isactive ===true)[0].isactive=false;
+    this.router.navigate(['login'])
   }
   getusers(){
     return this.users;
+  }
+  removeUser(user :UserLogin){
+    this.users.filter(data => data.id === user.id);
   }
 }

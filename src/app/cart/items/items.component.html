@@ -1,1 +1,24 @@
-<p>items works!</p>
+ <p>Items in the Cart  </p>
+<mat-label *ngIf="books.length == 0">
+  Their are no Items </mat-label>
+  <mat-label *ngIf="books.length != 0">Their are {{books.length}} books </mat-label>
+<div class="content">
+ 
+  
+  <ng-container *ngFor="let singleBook of books" class="column">
+    <mat-card class="book-card">
+      <img mat-card-image [src]="singleBook.img_src" [alt]="singleBook.title" class="book-img" />
+      <mat-card-content>
+        <h2 class="book-title">{{ singleBook.title | titlecase }}</h2>
+        <p class="book-author">By {{ singleBook.author }}</p>
+        <p class="book-price">{{ singleBook.price | currency: 'UGX' }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+       <button  mat-raised-button color="primary">Buy Now</button>
+        <button mat-button color="accent" *ngIf="singleBook.isinCart" (click)="removeItem(singleBook)">
+          Remove from Cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>

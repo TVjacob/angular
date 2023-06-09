@@ -1,0 +1,55 @@
+
+<div class="dashboard-container">
+  <!-- Side Menu -->
+  <mat-sidenav class="side-menu" mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/dashboard/manage-books']">Manage Books</a>
+      <a mat-list-item [routerLink]="['/dashboard/manage-users']">Manage Users</a>
+      <a mat-list-item [routerLink]="['/dashboard/reports']">Reports</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="dashboard-content">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let book">{{ book.title }}</td>
+  </ng-container>
+
+  <!-- Price Column -->
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let book">{{ book.price }}</td>
+  </ng-container>
+
+  <!-- Author Column -->
+  <ng-container matColumnDef="author">
+    <th mat-header-cell *matHeaderCellDef>Author</th>
+    <td mat-cell *matCellDef="let book">{{ book.author }}</td>
+  </ng-container>
+
+  <!-- Image Column -->
+  <ng-container matColumnDef="image">
+    <th mat-header-cell *matHeaderCellDef>Image</th>
+    <td mat-cell *matCellDef="let book">
+      <img [src]="book.img_src" alt="Book Image" class="book-image">
+    </td>
+  </ng-container>
+
+  <!-- Delete Column -->
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let book">
+      <button mat-icon-button color="warn" (click)="deleteBook(book)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <!-- Table Rows -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let book; columns: displayedColumns;"></tr>
+</table>
+</div>
+</div>
+

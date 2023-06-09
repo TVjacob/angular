@@ -7,4 +7,5 @@ export interface Book{
   file_path:string,
   category:string,
   author:string,
+  isinCart:boolean,
 }

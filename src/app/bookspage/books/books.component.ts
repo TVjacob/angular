@@ -8,15 +8,24 @@ import { BookserviceService } from 'src/app/services/bookservice.service';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit {
-  books:Array<Book>=[];
 
   constructor(private bookService :BookserviceService){
 
   }
 
+  books:Array<Book>=[];
+
+
+
   ngOnInit(): void {
     this.books=this.bookService.getBooks();
 
+  }
+  removeItem(book: Book) {
+    this.bookService.removeToCart(book);
+  }
+  addtoCart(book: Book) {
+    this.bookService.addToCart(book);
   }
 
 }

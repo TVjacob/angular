@@ -1,18 +1,22 @@
-<h1>Our Books </h1>
-<ul>
+<h1>Our Books</h1>
+<div class="content">
+  <ng-container *ngFor="let singleBook of books" class="column">
+    <mat-card class="book-card">
+      <img mat-card-image [src]="singleBook.img_src" [alt]="singleBook.title" class="book-img" />
+      <mat-card-content>
+        <h2 class="book-title">{{ singleBook.title | titlecase }}</h2>
+        <p class="book-author">By {{ singleBook.author }}</p>
+        <p class="book-price">{{ singleBook.price | currency: 'UGX' }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="accent" *ngIf="!singleBook.isinCart" (click)="addtoCart(singleBook)">
+          Add to Cart
+        </button>
+        <button mat-button color="accent" *ngIf="singleBook.isinCart" (click)="removeItem(singleBook)">
+          Remove from Cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
 
-  <ng-container *ngFor="let singleBook of books; let i=index">
-<mat-card>
-  <mat-card-header>{{singleBook.title}}
-  </mat-card-header>
-  <mat-card-content>
-    <img [src]="singleBook.img_src" [alt]="singleBook.title" width="100"
-        class="m-auto rounded-sm" />
-    <p>
-    {{ singleBook.title | titlecase }} by {{ singleBook.author |
-      titlecase}}</p>
-  <p class="my-4">{{ singleBook.price | currency:'UGX' }}</p>
-  </mat-card-content>
-</mat-card>
-</ng-container>
-</ul>

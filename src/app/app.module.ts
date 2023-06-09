@@ -10,6 +10,9 @@ import { BooksComponent } from './bookspage/books/books.component';
 import { ItemsComponent } from './cart/items/items.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from './admin/products/products.component';
+import { UsersComponent } from './admin/users/users.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,14 @@ import { LoginComponent } from './auth/login/login.component';
     BooksComponent,
     ItemsComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ProductsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,MaterailModuleModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

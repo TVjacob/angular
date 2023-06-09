@@ -16,11 +16,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+import { FormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   exports: [
+    MatTabsModule,
+    MatSidenavModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,

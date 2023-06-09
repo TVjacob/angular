@@ -6,4 +6,15 @@ export interface UserLogin{
   img_src:string,
   isactive:boolean,
 
+
+}
+export interface LoginForm {
+  username: string;
+  password: string;
+}
+
+export interface RegisterForm {
+  username: string;
+  password: string;
+  confirm_password: string;
 }

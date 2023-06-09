@@ -4,7 +4,7 @@ import { Book } from '../models/book';
 @Injectable({
   providedIn: 'root'
 })
-export class CartserviceService {
+export class CartService {
   cart: Array<Book> = [];
 
   constructor() {}
@@ -19,6 +19,12 @@ export class CartserviceService {
 
   remove(book: Book) {
     this.cart = this.cart.filter((b) => b != book);
+  }
+  findBy(book:Book){
+    return this.cart.filter((b)=> b === book);
+  }
+  findById(id:number){
+    return this.cart.filter((b)=> b.id === id)[0];
   }
 
 }
